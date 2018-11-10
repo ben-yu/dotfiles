@@ -1,7 +1,6 @@
 " Automatic .vimrc reload
 autocmd! bufwritepost .vimrc source %
 
-
 set pastetoggle=<F2>
 set clipboard=unnamed
 
@@ -39,6 +38,16 @@ set tw=79 " document width
 set history=700 " history level
 set undolevels=700 "undo level
 
+
+" Plugins
+
+call plug#begin()
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'powerline/powerline'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+call plug#end()
+
 " Theme
 syntax enable
 set background=dark
@@ -57,12 +66,20 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
 " Tab with spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
-set softtabstop=4
+set softtabstop=2
 set shiftround
 set autoindent
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:·
+set showbreak=↪\
+set listchars=space:·
+highlight WhiteSpaceBol guifg=blue
+highlight WhiteSpaceMol guifg=white
+match WhiteSpaceMol / /
+2match WhiteSpaceBol /^ \+/
 
 " Case insensitive search
 set hlsearch "highlight all search patterns
@@ -79,9 +96,6 @@ set noswapfile
 set spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md *.wiki setlocal spell
 set complete+=kspell
-
-" Setup pathogen for plugins
-execute pathogen#infect()
 
 " ============================================================================
 "
@@ -115,3 +129,6 @@ inoremap jk <ESC>
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Dropbox/wiki/html'}]
 
+"FZF through Homebrew
+set rtp+=/usr/local/opt/fzf
+map ; :FZF<CR>
