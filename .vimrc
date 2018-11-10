@@ -18,7 +18,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-
 " easier moving between tabs"
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
@@ -38,22 +37,9 @@ set tw=79 " document width
 set history=700 " history level
 set undolevels=700 "undo level
 
-
-" Plugins
-
-call plug#begin()
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'powerline/powerline'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-call plug#end()
-
 " Theme
 syntax enable
-set background=dark
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h15
 set nocompatible
-let g:Powerline_symbols = 'unicode'
 set encoding =utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
@@ -79,7 +65,7 @@ set listchars=space:·
 highlight WhiteSpaceBol guifg=blue
 highlight WhiteSpaceMol guifg=white
 match WhiteSpaceMol / /
-2match WhiteSpaceBol /^ \+/
+match WhiteSpaceBol /^ \+/
 
 " Case insensitive search
 set hlsearch "highlight all search patterns
@@ -97,20 +83,48 @@ set spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md *.wiki setlocal spell
 set complete+=kspell
 
-" ============================================================================
-"
-"
-" " Settings for vim-powerline
-" " git://github.com/Lokaltog/vim-powerline.git
-set laststatus=2
-"
-"
-" " Settings for ctrlp
-" " https://github.com/kien/ctrlp.vim.git
-let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
+" ===========================================================================
+" Plugins
+" ===========================================================================
+
+call plug#begin()
+" Fuzzy file finder
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" Create non-existent directories when writing buffer
+Plug 'pbrisbin/vim-mkdir'
+" Status Bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Shows list of buffers
+Plug 'bling/vim-bufferline'
+" Unix shell commands
+Plug 'tpope/vim-eunuch'
+" Handle surrounds like parenthesis quotes
+Plug 'tpope/vim-surround'
+" Handle commenting
+Plug 'vim-scripts/tComment'
+" Golang support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'janko-m/vim-test' " Run tests for different langs
+" Ruby and Rails support
+Plug 'tpope/vim-endwise' " automatically add 'end'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+
+call plug#end()
+
+"FZF through Homebrew
+set rtp+=/usr/local/opt/fzf
+map ; :FZF<CR>
+
+" " Airline Config
+let g:airline_theme='badwolf'
+let g:airline#extensions#tabline#enabled = 1
+" " Install powerline fonts from https://github.com/powerline/fonts
+" " Set font if using Iterm2
+let g:airline_powerline_fonts = 1
 
 " " Python folding
 " " mkdir -p ~/.vim/ftplugin
@@ -129,6 +143,4 @@ inoremap jk <ESC>
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Dropbox/wiki/html'}]
 
-"FZF through Homebrew
-set rtp+=/usr/local/opt/fzf
-map ; :FZF<CR>
+
