@@ -130,6 +130,7 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'dansomething/vim-hackernews'
 
 Plug 'junegunn/goyo.vim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 "FZF through Homebrew
