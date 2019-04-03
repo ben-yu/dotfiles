@@ -22,6 +22,10 @@ map <c-h> <c-w>h
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" buffer toggling
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -83,6 +87,9 @@ set spell spelllang=en_us
 autocmd BufRead,BufNewFile *.md *.wiki setlocal spell
 set complete+=kspell
 
+" Auto-write on GoBuild and other commands
+set autowrite
+
 " ===========================================================================
 " Plugins
 " ===========================================================================
@@ -106,13 +113,23 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/tComment'
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'janko-m/vim-test' " Run tests for different langs
+Plug 'mdempsky/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
+" Git wrapper
+Plug 'tpope/vim-fugitive'
+" git diff in 'gutter'
+Plug 'airblade/vim-gitgutter'
+ " Run tests for different langs
+Plug 'janko-m/vim-test'
 " Ruby and Rails support
 Plug 'tpope/vim-endwise' " automatically add 'end'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 
+Plug 'qpkorr/vim-bufkill'
+
+Plug 'dansomething/vim-hackernews'
+
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 "FZF through Homebrew
