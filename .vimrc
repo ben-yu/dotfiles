@@ -4,6 +4,10 @@ autocmd! bufwritepost .vimrc source %
 set pastetoggle=<F2>
 set clipboard=unnamed
 
+" Copy/Paste
+vnoremap <C-c> :w !pbcopy<CR><CR>
+noremap <C-v> :r !pbpaste<CR><CR>
+
 " Mouse and backspace
 set mouse=a
 set bs=2
@@ -130,8 +134,14 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'dansomething/vim-hackernews'
 
 Plug 'junegunn/goyo.vim'
+
 Plug 'vimwiki/vimwiki'
+
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
 call plug#end()
+
+packadd! matchit
 
 "FZF through Homebrew
 set rtp+=/usr/local/opt/fzf
