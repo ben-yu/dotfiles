@@ -4,7 +4,7 @@ autocmd! bufwritepost .vimrc source %
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-" Copy/Paste
+" OSX Copy/Paste
 vnoremap <C-c> :w !pbcopy<CR><CR>
 noremap <C-v> :r !pbpaste<CR><CR>
 
@@ -134,13 +134,12 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'dansomething/vim-hackernews'
 
 Plug 'junegunn/goyo.vim'
-
 Plug 'vimwiki/vimwiki'
 
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
 call plug#end()
 
+" Jump to matching characters with %
 packadd! matchit
 
 "FZF through Homebrew
@@ -171,4 +170,16 @@ inoremap jk <ESC>
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Dropbox/wiki/html'}]
 
+" go-vim plugin specific commands
+" Also run `goimports` on your current file on every save
+" Might be be slow on large codebases, if so, just comment it out
+let g:go_fmt_command = "goimports"
+
+" Status line types/signatures.
+let g:go_auto_type_info = 1
+
+"au filetype go inoremap <buffer> . .<C-x><C-o>
+
+" If you want to disable gofmt on save
+" let g:go_fmt_autosave = 0
 
