@@ -6,7 +6,8 @@ set clipboard=unnamed
 
 " OSX Copy/Paste
 vnoremap <C-c> :w !pbcopy<CR><CR>
-noremap <C-v> :r !pbpaste<CR><CR>
+imap <C-v> <ESC> :r !pbpaste<CR> :startinsert<CR>
+vmap <C-v> <ESC> :r !pbpaste<CR> v
 
 " Mouse and backspace
 set mouse=a
@@ -39,6 +40,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 filetype off
 filetype plugin indent on
 syntax on
+
 
 set number " show line numbers
 set tw=79 " document width
@@ -117,7 +119,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/tComment'
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'mdempsky/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " git diff in 'gutter'
@@ -182,4 +183,7 @@ let g:go_auto_type_info = 1
 
 " If you want to disable gofmt on save
 " let g:go_fmt_autosave = 0
+
+" Golang autocomplete on '.'
+" au filetype go inoremap <buffer> . .<C-x><C-o>
 
