@@ -43,7 +43,6 @@ syntax on
 
 
 set number " show line numbers
-set tw=79 " document width
 set history=700 " history level
 set undolevels=700 "undo level
 
@@ -79,6 +78,10 @@ match WhiteSpaceBol /^ \+/
 
 " Case insensitive search
 set hlsearch "highlight all search patterns
+" reset search highlighting
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+
 set incsearch
 set ignorecase "ignore case
 set smartcase
