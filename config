@@ -1,0 +1,33 @@
+# appearance
+theme = TokyoNight Storm 
+background-opacity = 0.75
+background-blur-radius = 40
+font-family = VictorMono NFM
+font-size = 12
+cursor-style = block
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+mouse-hide-while-typing = true
+
+# macOS-specific settings
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+# window controls
+confirm-close-surface = true
+window-title-font-family = VictorMono NFM Italic
+window-decoration = true
+window-padding-x = 2
+window-padding-y = 2
+window-padding-balance = true
+window-save-state = always
+
+# auto update settings
+auto-update = download
+auto-update-channel = stable
+
+# extras
+shell-integration-features = true
+copy-on-select = clipboard
+focus-follows-mouse = true
+link-url = true

@@ -1,7 +1,6 @@
 " Automatic .vimrc reload
 autocmd! bufwritepost .vimrc source %
 
-set pastetoggle=<F2>
 set clipboard=unnamed
 
 " OSX Copy/Paste
@@ -52,9 +51,6 @@ set nocompatible
 set encoding =utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
-color badwolf
 
 " Color Column
 set colorcolumn=80
@@ -107,6 +103,8 @@ call plug#begin()
 " Fuzzy file finder
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+
+Plug 'folke/tokyonight.nvim'
 " Create non-existent directories when writing buffer
 Plug 'pbrisbin/vim-mkdir'
 " Status Bar
@@ -190,3 +188,4 @@ let g:go_auto_type_info = 1
 " Golang autocomplete on '.'
 " au filetype go inoremap <buffer> . .<C-x><C-o>
 
+colorscheme tokyonight-storm
